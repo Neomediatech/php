@@ -31,6 +31,13 @@ RUN pecl bundle -d /usr/src/php/ext mailparse && \
     rm -f /usr/src/php/ext/mailparse-*.tgz && \
     docker-php-ext-install -j$(nproc) mailparse
 
+# Enable gd support
+RUN docker-php-ext-configure gd --with-jpeg --with-webp
+RUN docker-php-ext-install -j$(nproc) gd
+
+# Enable EXIF support
+RUN docker-php-ext-install -j$(nproc) exif
+
 RUN echo "ServerTokens Prod" > $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
     echo "ServerSignature Off" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
     echo '<Location "/server-status">' >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
@@ -40,12 +47,5 @@ RUN echo "ServerTokens Prod" > $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
 
 # Rewrite engine
 RUN a2enmod rewrite
-
-# Enable gd support
-RUN docker-php-ext-configure gd --with-jpeg --with-webp
-RUN docker-php-ext-install -j$(nproc) gd
-
-# Enable EXIF support
-RUN docker-php-ext-install -j$(nproc) exif
 
 HEALTHCHECK --interval=60s --timeout=5s --start-period=60s --retries=10 CMD curl -sS localhost/server-status?auto | grep -E "ServerVersion|RestartTime|ServerUptime:" && echo "Gimme a page" || exit 1
