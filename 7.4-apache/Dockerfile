@@ -8,9 +8,10 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 RUN echo $TZ > /etc/timezone && \
     apt-get update && apt-get -y dist-upgrade && \
-    apt-get install -y libbz2-dev libpng-dev pdfgrep libfcgi-bin libzip-dev netcat tzdata libjpeg-dev && \
-    rm -rf /var/lib/apt/lists* && \
-    for mod in mysqli bz2 zip pdo_mysql; do docker-php-ext-install -j$(nproc) $mod ; done && \
+    apt-get install -y libbz2-dev libpng-dev pdfgrep libfcgi-bin libzip-dev netcat tzdata libjpeg-dev libwebp-dev && \
+    rm -rf /var/lib/apt/lists*
+
+RUN for mod in mysqli bz2 zip pdo_mysql; do docker-php-ext-install -j$(nproc) $mod ; done && \
     echo "[PHP]" > $PHP_INI_DIR/conf.d/0-custom.ini && \
     echo "memory_limit = 1024M" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
     echo "post_max_size = 200M" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
@@ -41,7 +42,10 @@ RUN echo "ServerTokens Prod" > $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
 RUN a2enmod rewrite
 
 # Enable gd support
-RUN docker-php-ext-configure gd --with-jpeg
+RUN docker-php-ext-configure gd --with-jpeg --with-webp
 RUN docker-php-ext-install -j$(nproc) gd
+
+# Enable EXIF support
+RUN docker-php-ext-install -j$(nproc) exif
 
 HEALTHCHECK --interval=60s --timeout=5s --start-period=60s --retries=10 CMD curl -sS localhost/server-status?auto | grep -E "ServerVersion|RestartTime|ServerUptime:" && echo "Gimme a page" || exit 1
