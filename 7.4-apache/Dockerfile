@@ -8,7 +8,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 RUN echo $TZ > /etc/timezone && \
     apt-get update && apt-get -y dist-upgrade && \
-    apt-get install -y libbz2-dev libpng-dev pdfgrep libfcgi-bin libzip-dev netcat tzdata libjpeg-dev libwebp-dev libpq-dev && \
+    apt-get install -y libbz2-dev libpng-dev pdfgrep libfcgi-bin libzip-dev netcat tzdata libjpeg-dev libwebp-dev libpq-dev \
+                       whois netbase && \
     rm -rf /var/lib/apt/lists*
 
 RUN for mod in mysqli bz2 zip pdo_mysql pdo_pgsql pgsql; do docker-php-ext-install -j$(nproc) $mod ; done && \
