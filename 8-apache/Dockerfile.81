@@ -39,6 +39,12 @@ RUN docker-php-ext-install -j$(nproc) gd
 # Enable EXIF support
 RUN docker-php-ext-install -j$(nproc) exif
 
+# Enable INTL, SOAP, XSL and SOCKETS support (for Magento installations)
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends libicu-dev libxml2-dev libxslt-dev && \
+    rm -rf /var/lib/apt/lists*
+RUN docker-php-ext-install -j$(nproc) intl soap xsl sockets
+
 RUN echo "ServerTokens Prod" > $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
     echo "ServerSignature Off" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
     echo '<Location "/server-status">' >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
