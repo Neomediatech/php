@@ -45,6 +45,13 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists*
 RUN docker-php-ext-install -j$(nproc) intl soap xsl sockets bcmath
 
+# Enable IMAP support
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends libc-client-dev libkrb5-dev && \
+    rm -rf /var/lib/apt/lists*
+RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
+    && docker-php-ext-install -j$(nproc) imap
+
 RUN echo "ServerTokens Prod" > $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
     echo "ServerSignature Off" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
     echo '<Location "/server-status">' >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
