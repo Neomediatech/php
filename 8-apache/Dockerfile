@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 RUN echo $TZ > /etc/timezone && \
     apt-get update && apt-get -y dist-upgrade && \
-    apt-get install -y libbz2-dev libpng-dev pdfgrep libfcgi-bin libzip-dev netcat tzdata libjpeg-dev libwebp-dev \
+    apt-get install -y libbz2-dev libpng-dev pdfgrep libfcgi-bin libzip-dev netcat-traditional tzdata libjpeg-dev libwebp-dev \
                        whois netbase && \
     rm -rf /var/lib/apt/lists*
 
@@ -44,6 +44,13 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends libicu-dev libxml2-dev libxslt-dev && \
     rm -rf /var/lib/apt/lists*
 RUN docker-php-ext-install -j$(nproc) intl soap xsl sockets bcmath
+
+# Enable IMAP support
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends libc-client-dev libkrb5-dev && \
+    rm -rf /var/lib/apt/lists*
+RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
+    && docker-php-ext-install -j$(nproc) imap
 
 RUN echo "ServerTokens Prod" > $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
     echo "ServerSignature Off" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
