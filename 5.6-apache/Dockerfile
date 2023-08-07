@@ -6,6 +6,11 @@ LABEL maintainer="docker-dario@neomediatech.it" \
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=Europe/Rome
 
+# Update stretch repositories
+RUN sed -i -e 's/deb.debian.org/archive.debian.org/g' \
+           -e 's|security.debian.org|archive.debian.org/|g' \
+           -e '/stretch-updates/d' /etc/apt/sources.list
+
 RUN echo $TZ > /etc/timezone && \
     apt-get update && apt-get -y dist-upgrade && \
     apt-get install -y libbz2-dev libpng-dev pdfgrep libfcgi-bin libzip-dev netcat tzdata libjpeg-dev libwebp-dev libpq-dev \

@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 RUN echo $TZ > /etc/timezone && \
     apt-get update && apt-get -y dist-upgrade && \
-    apt-get install -y libbz2-dev libpng-dev pdfgrep libfcgi-bin libzip-dev netcat tzdata libjpeg-dev libwebp-dev \
+    apt-get install -y libbz2-dev libpng-dev pdfgrep libfcgi-bin libzip-dev netcat-traditional tzdata libjpeg-dev libwebp-dev \
                        whois netbase && \
     rm -rf /var/lib/apt/lists*
 
