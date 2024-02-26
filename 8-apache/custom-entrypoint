@@ -1,0 +1,28 @@
+#!/bin/sh
+# Get all environment variables starting with 'NGINX_', 'SSL_', `LOG_`, and 'APACHE_'
+subst_vars=$(env | grep -E '^(NGINX_|SSL_|LOG_|APACHE_)' | cut -d= -f1 | awk '{printf "${%s},",$1}' | sed 's/,$//')
+template_file="$APACHE_CONFDIR/mpm_prefork.conf.template"
+output_file="$APACHE_CONFDIR/mods-enabled/mpm_prefork.conf"
+
+# Validate that all required variables are set
+for var_name in $(echo "$subst_vars" | tr ',' ' '); do
+    eval "value=\$$var_name" # Use eval to get the value of var_name
+    if [ -z "$value" ]; then
+        echo "🛑 ERROR ($script_name): Environment variable $var_name is not set."
+        return 1
+    fi
+done
+
+echo "Processing $template_file → $output_file..."
+envsubst "$subst_vars" < "$template_file" > "$output_file"
+echo $?
+
+set -e
+
+# first arg is `-f` or `--some-option`
+if [ "${1#-}" != "$1" ]; then
+	set -- apache2-foreground "$@"
+fi
+
+exec "$@"
+
