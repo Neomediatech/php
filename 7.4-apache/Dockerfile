@@ -52,6 +52,12 @@ RUN apt-get update && \
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install -j$(nproc) imap
 
+# Enable GMP support
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends libgmp-dev && \
+    docker-php-ext-install gmp && \
+    rm -rf /var/lib/apt/lists*
+
 RUN echo "ServerTokens Prod" > $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
     echo "ServerSignature Off" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
     echo '<Location "/server-status">' >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
