@@ -32,8 +32,11 @@ RUN pecl bundle -d /usr/src/php/ext mailparse && \
     rm -f /usr/src/php/ext/mailparse-*.tgz && \
     docker-php-ext-install -j$(nproc) mailparse
 
-# Enable gd support
-RUN docker-php-ext-configure gd --with-jpeg --with-webp
+# Enable gd support (with Freetype)
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends libfreetype-dev && \
+    rm -rf /var/lib/apt/lists*
+RUN docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype
 RUN docker-php-ext-install -j$(nproc) gd
 
 # Enable EXIF support
