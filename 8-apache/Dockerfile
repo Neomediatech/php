@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN echo $TZ > /etc/timezone && \
     apt-get update && apt-get -y dist-upgrade && \
     apt-get install -y libbz2-dev libpng-dev pdfgrep libfcgi-bin libzip-dev netcat-traditional tzdata libjpeg-dev libwebp-dev \
-                       whois netbase && \
+                       whois netbase gettext-base && \
     rm -rf /var/lib/apt/lists*
 
 RUN for mod in mysqli bz2 zip pdo_mysql; do docker-php-ext-install -j$(nproc) $mod ; done && \
@@ -32,8 +32,11 @@ RUN pecl bundle -d /usr/src/php/ext mailparse && \
     rm -f /usr/src/php/ext/mailparse-*.tgz && \
     docker-php-ext-install -j$(nproc) mailparse
 
-# Enable gd support
-RUN docker-php-ext-configure gd --with-jpeg --with-webp
+# Enable gd support (with Freetype)
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends libfreetype-dev && \
+    rm -rf /var/lib/apt/lists*
+RUN docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype
 RUN docker-php-ext-install -j$(nproc) gd
 
 # Enable EXIF support
@@ -51,6 +54,9 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists*
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install -j$(nproc) imap
+
+# Enable OPcache
+RUN docker-php-ext-install opcache
 
 RUN echo "ServerTokens Prod" > $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
     echo "ServerSignature Off" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
@@ -71,5 +77,28 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists* && \
     a2enmod security2 && \
     echo 'SecServerSignature " "' >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf
+
+# Mod Info
+RUN a2enmod info
+
+# Create custom snippets directory
+RUN mkdir -p $APACHE_CONFDIR/conf-custom && \
+    echo "# Include custom snippets directory:" >> $APACHE_CONFDIR/apache2.conf && \
+    echo "IncludeOptional conf-custom/*.conf" >> $APACHE_CONFDIR/apache2.conf
+
+# setup some ENV vars to allow customi[s|z]ations
+ENV APACHE_START_SERVERS="5" \
+    APACHE_MIN_SPARE_SERVERS="5" \
+    APACHE_MAX_SPARE_SERVERS="10" \
+    APACHE_MAX_REQUEST_WORKERS="150" \
+    APACHE_MAX_CONNECTIONS_PER_CHILD="0" \
+    APACHE_SERVER_LIMIT="256"
+
+COPY --chmod=444 mpm_prefork.conf.template $APACHE_CONFDIR/
+
+COPY --chmod=755 custom-entrypoint /
+
+ENTRYPOINT ["/custom-entrypoint"]
+CMD ["apache2-foreground"]
 
 HEALTHCHECK --interval=60s --timeout=5s --start-period=60s --retries=10 CMD curl -sS localhost/server-status?auto | grep -E "ServerVersion|RestartTime|ServerUptime:" && echo "Gimme a page" || exit 1
