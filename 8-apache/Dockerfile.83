@@ -14,7 +14,7 @@ RUN echo $TZ > /etc/timezone && \
 
 ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
-RUN /bin/sh -c "/usr/local/bin/install-php-extensions apcu"
+RUN install-php-extensions apcu
 RUN install-php-extensions bcmath
 RUN install-php-extensions bz2
 RUN install-php-extensions exif
