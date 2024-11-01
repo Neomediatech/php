@@ -44,6 +44,9 @@ RUN a2enmod ssl
 # Mod Info
 RUN a2enmod info
 
+# Mod remoteip
+RUN a2enmod remoteip
+
 # Create custom snippets directory
 RUN mkdir -p $APACHE_CONFDIR/conf-custom && \
     echo "# Include custom snippets directory:" >> $APACHE_CONFDIR/apache2.conf && \
