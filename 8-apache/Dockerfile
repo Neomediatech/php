@@ -8,68 +8,34 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 RUN echo $TZ > /etc/timezone && \
     apt-get update && apt-get -y dist-upgrade && \
-    apt-get install -y libbz2-dev libpng-dev pdfgrep libfcgi-bin libzip-dev netcat-traditional tzdata libjpeg-dev libwebp-dev \
-                       whois netbase gettext-base && \
+    apt-get install -y pdfgrep libfcgi-bin netcat-traditional tzdata \
+                       whois netbase gettext-base wget && \
     rm -rf /var/lib/apt/lists*
 
-RUN for mod in mysqli bz2 zip pdo_mysql; do docker-php-ext-install -j$(nproc) $mod ; done && \
-    echo "[PHP]" > $PHP_INI_DIR/conf.d/0-custom.ini && \
-    echo "memory_limit = 1024M" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
-    echo "post_max_size = 200M" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
-    echo "upload_max_filesize = 200M" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
-    echo "max_execution_time = 300" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
-    echo "date.timezone = $TZ" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
-    echo "expose_php = Off" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
-    echo "upload_tmp_dir = /tmp" >> $PHP_INI_DIR/conf.d/0-custom.ini
+ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
-# Redis
-RUN pecl bundle -d /usr/src/php/ext redis && \
-    rm -f /usr/src/php/ext/redis-*.tgz && \
-    docker-php-ext-install -j$(nproc) redis
-
-# mailparse
-RUN pecl bundle -d /usr/src/php/ext mailparse && \
-    rm -f /usr/src/php/ext/mailparse-*.tgz && \
-    docker-php-ext-install -j$(nproc) mailparse
-
-# Enable gd support (with Freetype)
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends libfreetype-dev && \
-    rm -rf /var/lib/apt/lists*
-RUN docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype
-RUN docker-php-ext-install -j$(nproc) gd
-
-# Enable EXIF support
-RUN docker-php-ext-install -j$(nproc) exif
-
-# Enable INTL, SOAP, XSL, SOCKETS (and others) support (for Magento installations)
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends libicu-dev libxml2-dev libxslt-dev && \
-    rm -rf /var/lib/apt/lists*
-RUN docker-php-ext-install -j$(nproc) intl soap xsl sockets bcmath
-
-# Enable IMAP support
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends libc-client-dev libkrb5-dev && \
-    rm -rf /var/lib/apt/lists*
-RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-    && docker-php-ext-install -j$(nproc) imap
-
-# Enable OPcache
-RUN docker-php-ext-install opcache
-
-RUN echo "ServerTokens Prod" > $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
-    echo "ServerSignature Off" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
-    echo '<Location "/server-status">' >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
-    echo "  SetHandler server-status" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
-    echo "  Require  host  localhost" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
-    echo "</Location>" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf 
-
-# Rewrite engine
-RUN a2enmod rewrite
-
-# ssl
-RUN a2enmod ssl
+# Install extensions with install-php-extensions, thanks to Michele Locati https://github.com/mlocati
+RUN install-php-extensions \
+    apcu \
+    bcmath \
+    bz2 \
+    exif \
+    gd \
+    imap \
+    intl \
+    mailparse \
+    mysqli \
+    opcache \
+    pdo_mysql \
+    redis \
+    soap \
+    sockets \
+    xsl \
+    zip \
+    imagick/imagick@28f27044e435a2b203e32675e942eb8de620ee58 \
+    gmp \
+    sysvsem
+# For imagick see https://github.com/Imagick/imagick/issues/640#issuecomment-2372464340 for details
 
 # Enable mod_security
 RUN apt-get update && \
@@ -78,13 +44,29 @@ RUN apt-get update && \
     a2enmod security2 && \
     echo 'SecServerSignature " "' >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf
 
-# Mod Info
-RUN a2enmod info
+# Enable rewrite,  ssl, info, remoteip modules
+RUN a2enmod rewrite ssl info remoteip
 
 # Create custom snippets directory
 RUN mkdir -p $APACHE_CONFDIR/conf-custom && \
     echo "# Include custom snippets directory:" >> $APACHE_CONFDIR/apache2.conf && \
     echo "IncludeOptional conf-custom/*.conf" >> $APACHE_CONFDIR/apache2.conf
+
+RUN echo "[PHP]" > $PHP_INI_DIR/conf.d/0-custom.ini && \
+    echo "memory_limit = 1024M" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
+    echo "post_max_size = 200M" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
+    echo "upload_max_filesize = 200M" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
+    echo "max_execution_time = 300" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
+    echo "date.timezone = $TZ" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
+    echo "expose_php = Off" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
+    echo "upload_tmp_dir = /tmp" >> $PHP_INI_DIR/conf.d/0-custom.ini
+
+RUN echo "ServerTokens Prod" > $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
+    echo "ServerSignature Off" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
+    echo '<Location "/server-status">' >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
+    echo "  SetHandler server-status" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
+    echo "  Require  host  localhost" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
+    echo "</Location>" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf 
 
 # setup some ENV vars to allow customi[s|z]ations
 ENV APACHE_START_SERVERS="5" \
@@ -102,3 +84,4 @@ ENTRYPOINT ["/custom-entrypoint"]
 CMD ["apache2-foreground"]
 
 HEALTHCHECK --interval=60s --timeout=5s --start-period=60s --retries=10 CMD curl -sS localhost/server-status?auto | grep -E "ServerVersion|RestartTime|ServerUptime:" && echo "Gimme a page" || exit 1
+
