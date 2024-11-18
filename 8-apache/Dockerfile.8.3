@@ -14,27 +14,10 @@ RUN echo $TZ > /etc/timezone && \
 
 ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
+ENV MODULES="apcu bcmath bz2 exif gd imap intl mailparse mysqli opcache pdo_mysql"
+ENV MODULES="$MODULES redis soap sockets xsl zip gmp sysvsem imagick/imagick@28f27044e435a2b203e32675e942eb8de620ee58"
 # Install extensions with install-php-extensions, thanks to Michele Locati https://github.com/mlocati
-RUN install-php-extensions \
-    apcu \
-    bcmath \
-    bz2 \
-    exif \
-    gd \
-    imap \
-    intl \
-    mailparse \
-    mysqli \
-    opcache \
-    pdo_mysql \
-    redis \
-    soap \
-    sockets \
-    xsl \
-    zip \
-    imagick/imagick@28f27044e435a2b203e32675e942eb8de620ee58 \
-    gmp \
-    sysvsem
+RUN install-php-extensions $MODULES
 # For imagick see https://github.com/Imagick/imagick/issues/640#issuecomment-2372464340 for details
 
 # Enable rewrite,  ssl, info, remoteip modules
@@ -45,21 +28,25 @@ RUN mkdir -p $APACHE_CONFDIR/conf-custom && \
     echo "# Include custom snippets directory:" >> $APACHE_CONFDIR/apache2.conf && \
     echo "IncludeOptional conf-custom/*.conf" >> $APACHE_CONFDIR/apache2.conf
 
-RUN echo "[PHP]" > $PHP_INI_DIR/conf.d/0-custom.ini && \
-    echo "memory_limit = 1024M" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
-    echo "post_max_size = 200M" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
-    echo "upload_max_filesize = 200M" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
-    echo "max_execution_time = 300" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
-    echo "date.timezone = $TZ" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
-    echo "expose_php = Off" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
-    echo "upload_tmp_dir = /tmp" >> $PHP_INI_DIR/conf.d/0-custom.ini
+RUN cat <<EOF > $PHP_INI_DIR/conf.d/0-custom.ini
+[PHP]
+memory_limit = 1024M
+post_max_size = 200M
+upload_max_filesize = 200M
+max_execution_time = 300
+date.timezone = $TZ
+expose_php = Off
+upload_tmp_dir = /tmp
+EOF
 
-RUN echo "ServerTokens Prod" > $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
-    echo "ServerSignature Off" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
-    echo '<Location "/server-status">' >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
-    echo "  SetHandler server-status" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
-    echo "  Require  host  localhost" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf && \
-    echo "</Location>" >> $APACHE_CONFDIR/conf-enabled/zz-custom.conf 
+RUN cat <<EOF > $APACHE_CONFDIR/conf-enabled/zz-custom.conf
+ServerTokens Prod
+ServerSignature Off
+<Location "/server-status
+  SetHandler server-status
+  Require  host  localhost
+</Location>
+EOF
 
 # setup some ENV vars to allow customi[s|z]ations
 ENV APACHE_START_SERVERS="5" \
