@@ -15,10 +15,9 @@ RUN echo $TZ > /etc/timezone && \
 ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 ENV MODULES="apcu bcmath bz2 exif gd imap intl mailparse mysqli opcache pdo_mysql"
-ENV MODULES="$MODULES redis soap sockets xsl zip gmp sysvsem imagick/imagick@28f27044e435a2b203e32675e942eb8de620ee58"
+ENV MODULES="$MODULES redis soap sockets xsl zip gmp sysvsem imagick"
 # Install extensions with install-php-extensions, thanks to Michele Locati https://github.com/mlocati
 RUN install-php-extensions $MODULES
-# For imagick see https://github.com/Imagick/imagick/issues/640#issuecomment-2372464340 for details
 
 # Enable mod_security
 RUN apt-get update && \
@@ -49,7 +48,7 @@ EOF
 RUN cat <<EOF > $APACHE_CONFDIR/conf-enabled/zz-custom.conf
 ServerTokens Prod
 ServerSignature Off
-<Location "/server-status
+<Location "/server-status">
   SetHandler server-status
   Require  host  localhost
 </Location>
