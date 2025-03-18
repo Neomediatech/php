@@ -36,25 +36,8 @@ RUN mkdir -p $APACHE_CONFDIR/conf-custom && \
     echo "# Include custom snippets directory:" >> $APACHE_CONFDIR/apache2.conf && \
     echo "IncludeOptional conf-custom/*.conf" >> $APACHE_CONFDIR/apache2.conf
 
-RUN cat <<EOF > $PHP_INI_DIR/conf.d/0-custom.ini
-[PHP]
-memory_limit = 1024M
-post_max_size = 200M
-upload_max_filesize = 200M
-max_execution_time = 300
-date.timezone = $TZ
-expose_php = Off
-upload_tmp_dir = /tmp
-EOF
-
-RUN cat <<EOF > $APACHE_CONFDIR/conf-enabled/zz-custom.conf
-ServerTokens Prod
-ServerSignature Off
-<Location "/server-status">
-  SetHandler server-status
-  Require  host  localhost
-</Location>
-EOF
+COPY 0-custom.ini $PHP_INI_DIR/conf.d/
+COPY zz-custom.conf $APACHE_CONFDIR/conf-enabled/
 
 # setup some ENV vars to allow customi[s|z]ations
 ENV APACHE_START_SERVERS="5" \
