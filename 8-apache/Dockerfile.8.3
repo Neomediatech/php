@@ -1,0 +1,66 @@
+FROM php:8.3-apache
+
+LABEL maintainer="docker-dario@neomediatech.it" \
+      org.label-schema.version=$PHP_VERSION
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    TZ=Europe/Rome
+
+RUN echo $TZ > /etc/timezone && \
+    apt-get update && apt-get -y dist-upgrade && \
+    apt-get install -y pdfgrep libfcgi-bin netcat-traditional tzdata \
+                       whois netbase gettext-base wget && \
+    rm -rf /var/lib/apt/lists*
+
+ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
+ENV MODULES="apcu bcmath bz2 exif gd imap intl mailparse mysqli opcache pdo_mysql"
+ENV MODULES="$MODULES redis soap sockets xsl zip gmp sysvsem imagick"
+# Install extensions with install-php-extensions, thanks to Michele Locati https://github.com/mlocati
+RUN install-php-extensions $MODULES
+
+# Enable rewrite,  ssl, info, remoteip modules
+RUN a2enmod rewrite ssl info remoteip
+
+# Create custom snippets directory
+RUN mkdir -p $APACHE_CONFDIR/conf-custom && \
+    echo "# Include custom snippets directory:" >> $APACHE_CONFDIR/apache2.conf && \
+    echo "IncludeOptional conf-custom/*.conf" >> $APACHE_CONFDIR/apache2.conf
+
+RUN cat <<EOF > $PHP_INI_DIR/conf.d/0-custom.ini
+[PHP]
+memory_limit = 1024M
+post_max_size = 200M
+upload_max_filesize = 200M
+max_execution_time = 300
+date.timezone = $TZ
+expose_php = Off
+upload_tmp_dir = /tmp
+EOF
+
+RUN cat <<EOF > $APACHE_CONFDIR/conf-enabled/zz-custom.conf
+ServerTokens Prod
+ServerSignature Off
+<Location "/server-status">
+  SetHandler server-status
+  Require  host  localhost
+</Location>
+EOF
+
+# setup some ENV vars to allow customi[s|z]ations
+ENV APACHE_START_SERVERS="5" \
+    APACHE_MIN_SPARE_SERVERS="5" \
+    APACHE_MAX_SPARE_SERVERS="10" \
+    APACHE_MAX_REQUEST_WORKERS="150" \
+    APACHE_MAX_CONNECTIONS_PER_CHILD="0" \
+    APACHE_SERVER_LIMIT="256"
+
+COPY --chmod=444 mpm_prefork.conf.template $APACHE_CONFDIR/
+
+COPY --chmod=755 custom-entrypoint /
+
+ENTRYPOINT ["/custom-entrypoint"]
+CMD ["apache2-foreground"]
+
+HEALTHCHECK --interval=60s --timeout=5s --start-period=60s --retries=10 CMD curl -sS localhost/server-status?auto | grep -E "ServerVersion|RestartTime|ServerUptime:" && echo "Gimme a page" || exit 1
+
