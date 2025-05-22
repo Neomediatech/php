@@ -13,6 +13,7 @@ jobs:
     with:
       dockerfile: "Dockerfile.8.4"
       dockerdir: "8-apache"
+      dockertag: "8.4-apache"
 
   push-report-to-repo:
     needs: [build-and-scan]
