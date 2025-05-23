@@ -9,16 +9,25 @@ on:
 jobs:
   build-and-scan:
     secrets: inherit
-    uses: Neomediatech/docker-images-scan-reports/.github/workflows/build-and-scan-docker-image.yml@main
+    strategy:
+      matrix:
+        target: [8, 8.1, 8.2, 8.3, 8.4]
+    uses: Neomediatech/gh-workflow/.github/workflows/build-and-scan-docker-image.yml@main
     with:
-      dockerfile: "Dockerfile.8.4"
+      dockerfile: "Dockerfile.${{ matrix.target }}"
       dockerdir: "8-apache"
-      dockertag: "8.4-apache"
+      dockertag: ${{ matrix.target }}-apache
 
   push-report-to-repo:
+    strategy:
+      matrix:
+        target: [8, 8.1, 8.2, 8.3, 8.4]
+      max-parallel: 1
     needs: [build-and-scan]
     secrets: inherit
-    uses: Neomediatech/docker-images-scan-reports/.github/workflows/copy-file-to-another-repo.yml@main
+    uses: Neomediatech/gh-workflow/.github/workflows/copy-file-to-another-repo.yml@main
     with:
       file_id: ${{ needs.build-and-scan.outputs.uploaded-file-id }}
       filename: ${{ needs.build-and-scan.outputs.file_to_copy_output }}
+      dockertag: ${{ matrix.target }}-apache
+
