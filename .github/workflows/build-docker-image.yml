@@ -12,8 +12,9 @@ jobs:
     strategy:
       matrix:
         type: [apache, fpm]
-        version: [8, 8.1, 8.2, 8.3, 8.4]
+        version: [7.4, 8, 8.1, 8.2, 8.3, 8.4]
       max-parallel: 1
+      # non posso parallellizzare il processo perché l'upload delle immagini va in errore con "permission denied"
     uses: Neomediatech/gh-workflows/.github/workflows/build-and-scan-docker-image.yml@main
     with:
       dockerfile: "Dockerfile.${{ matrix.version }}"
@@ -24,7 +25,7 @@ jobs:
     strategy:
       matrix:
         type: [apache, fpm]
-        version: [8, 8.1, 8.2, 8.3, 8.4]
+        version: [7.4, 8, 8.1, 8.2, 8.3, 8.4]
       max-parallel: 1
     needs: [build-and-scan]
     secrets: inherit
@@ -33,22 +34,4 @@ jobs:
       file_id: ${{ needs.build-and-scan.outputs.uploaded-file-id }}
       filename: ${{ needs.build-and-scan.outputs.file_to_copy_output }}
       dockertag: ${{ matrix.version }}-${{ matrix.type }}
-
-  build-and-scan-74:
-    secrets: inherit
-    needs: [push-report-to-repo]
-    uses: Neomediatech/gh-workflows/.github/workflows/build-and-scan-docker-image.yml@main
-    with:
-      dockerfile: "Dockerfile"
-      dockerdir: "7.4-apache"
-      dockertag: "7.4-apache"
-
-  push-report-to-repo-74:
-    needs: [build-and-scan-74]
-    secrets: inherit
-    uses: Neomediatech/gh-workflows/.github/workflows/copy-file-to-another-repo.yml@main
-    with:
-      file_id: ${{ needs.build-and-scan-74.outputs.uploaded-file-id }}
-      filename: ${{ needs.build-and-scan-74.outputs.file_to_copy_output }}
-      dockertag: "7.4-apache"
 
