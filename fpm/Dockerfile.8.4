@@ -1,4 +1,4 @@
-FROM php:8.3-fpm
+FROM php:8.4-fpm
 
 LABEL maintainer="docker-dario@neomediatech.it" \
       org.label-schema.version=$PHP_VERSION
@@ -35,10 +35,11 @@ RUN install-php-extensions \
     sockets \
     xsl \
     zip \
-    imagick/imagick@28f27044e435a2b203e32675e942eb8de620ee58 \
     gmp \
     sysvsem
-# For imagick see https://github.com/Imagick/imagick/issues/640#issuecomment-2372464340 for details
+ 
+# Imagick
+RUN install-php-extensions imagick
 
 RUN echo "[PHP]" > $PHP_INI_DIR/conf.d/0-custom.ini && \
     echo "date.timezone = $TZ" >> $PHP_INI_DIR/conf.d/0-custom.ini && \
