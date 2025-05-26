@@ -31,3 +31,21 @@ jobs:
       filename: ${{ needs.build-and-scan.outputs.file_to_copy_output }}
       dockertag: ${{ matrix.target }}-apache
 
+  build-and-scan-74:
+    secrets: inherit
+    needs: [push-report-to-repo]
+    uses: Neomediatech/gh-workflows/.github/workflows/build-and-scan-docker-image.yml@main
+    with:
+      dockerfile: "Dockerfile"
+      dockerdir: "7.4-apache"
+      dockertag: "7.4-apache"
+
+  push-report-to-repo:
+    needs: [build-and-scan-74]
+    secrets: inherit
+    uses: Neomediatech/gh-workflows/.github/workflows/copy-file-to-another-repo.yml@main
+    with:
+      file_id: ${{ needs.build-and-scan-74.outputs.uploaded-file-id }}
+      filename: ${{ needs.build-and-scan-74.outputs.file_to_copy_output }}
+      dockertag: "7.4-apache"
+
