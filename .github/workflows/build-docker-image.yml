@@ -42,7 +42,7 @@ jobs:
       dockerdir: "7.4-apache"
       dockertag: "7.4-apache"
 
-  push-report-to-repo:
+  push-report-to-repo-74:
     needs: [build-and-scan-74]
     secrets: inherit
     uses: Neomediatech/gh-workflows/.github/workflows/copy-file-to-another-repo.yml@main
