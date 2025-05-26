@@ -13,6 +13,7 @@ jobs:
       matrix:
         type: [apache, fpm]
         version: [8, 8.1, 8.2, 8.3, 8.4]
+      max-parallel: 1
     uses: Neomediatech/gh-workflows/.github/workflows/build-and-scan-docker-image.yml@main
     with:
       dockerfile: "Dockerfile.${{ matrix.version }}"
