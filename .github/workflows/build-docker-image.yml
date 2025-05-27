@@ -7,7 +7,7 @@ on:
   workflow_dispatch: # Permette di avviare il workflow manualmente dalla UI di GitHub
 
 jobs:
-  build-and-scan:
+  build-and-push:
     secrets: inherit
     strategy:
       matrix:
@@ -15,10 +15,21 @@ jobs:
         version: [7.4, 8, 8.1, 8.2, 8.3, 8.4]
       max-parallel: 1
       # non posso parallellizzare il processo perché l'upload delle immagini va in errore con "permission denied"
-    uses: Neomediatech/gh-workflows/.github/workflows/build-and-scan-docker-image.yml@main
+    uses: Neomediatech/gh-workflows/.github/workflows/build-and-push-docker-image.yml@main
     with:
       dockerfile: "Dockerfile.${{ matrix.version }}"
       dockerdir: ${{ matrix.type }}
+      dockertag: ${{ matrix.version }}-${{ matrix.type }}
+
+  scan-docker-image:
+    secrets: inherit
+    strategy:
+      matrix:
+        type: [apache, fpm]
+        version: [7.4, 8, 8.1, 8.2, 8.3, 8.4]
+    needs: [build-and-push]
+    uses: Neomediatech/gh-workflows/.github/workflows/scan-docker-image.yml@main
+    with:
       dockertag: ${{ matrix.version }}-${{ matrix.type }}
 
   push-report-to-repo:
@@ -27,11 +38,11 @@ jobs:
         type: [apache, fpm]
         version: [7.4, 8, 8.1, 8.2, 8.3, 8.4]
       max-parallel: 1
-    needs: [build-and-scan]
+    needs: [scan-docker-image]
     secrets: inherit
     uses: Neomediatech/gh-workflows/.github/workflows/copy-file-to-another-repo.yml@main
     with:
-      file_id: ${{ needs.build-and-scan.outputs.uploaded-file-id }}
-      filename: ${{ needs.build-and-scan.outputs.file_to_copy_output }}
+      file_id: ${{ needs.scan-docker-image.outputs.uploaded-file-id }}
+      filename: ${{ needs.scan-docker-image.outputs.file_to_copy_output }}
       dockertag: ${{ matrix.version }}-${{ matrix.type }}
 
