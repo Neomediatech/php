@@ -21,8 +21,12 @@ jobs:
 
           while IFS= read -r file; do
             dir=$(dirname "$file" | sed 's|^\./||')
-            #dockerfile=$(basename "$file")
-            tag=$(basename "$file"|sed 's/Dockerfile\.?//')
+            dockerfile=$(basename "$file")
+            if [[ $dockerfile == 'Dockerfile" ]]; then
+              tag='latest'
+            else
+              tag=$(basename "$file"|sed 's/Dockerfile\.?//')
+            fi
             # Evita la root vuota come directory
             if [[ "$dir" == "." ]]; then
               dir=""
@@ -41,7 +45,7 @@ jobs:
 
   use-matrix:
     needs: discover-dockerfiles
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
     strategy:
       matrix:
         include: ${{ fromJson(needs.discover-dockerfiles.outputs.matrix).include }}
