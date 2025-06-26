@@ -22,7 +22,7 @@ jobs:
           while IFS= read -r file; do
             dir=$(dirname "$file" | sed 's|^\./||')
             #dockerfile=$(basename "$file")
-            tag=$(basename "$file"|sed 's/Dockerfile.//')
+            tag=$(basename "$file"|sed 's/Dockerfile\.?//')
             # Evita la root vuota come directory
             if [[ "$dir" == "." ]]; then
               dir=""
