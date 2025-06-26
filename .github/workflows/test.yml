@@ -5,7 +5,8 @@ on:
 
 jobs:
   discover-dockerfiles:
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
+    runs-on: [self-hosted]
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
@@ -20,12 +21,13 @@ jobs:
 
           while IFS= read -r file; do
             dir=$(dirname "$file" | sed 's|^\./||')
-            dockerfile=$(basename "$file")
+            #dockerfile=$(basename "$file")
+            tag=$(basename "$file"|sed 's/Dockerfile.//')
             # Evita la root vuota come directory
             if [[ "$dir" == "." ]]; then
               dir=""
             fi
-            includes="${includes}{\"directory\":\"$dir\",\"dockerfile\":\"$dockerfile\"},"
+            includes="${includes}{\"directory\":\"$dir\",\"tag\":\"$tag\"},"
           done <<< "$files"
 
           # Rimuove la virgola finale e crea array include
@@ -47,4 +49,4 @@ jobs:
       - name: Print matrix info
         run: |
           echo "Directory: ${{ matrix.directory }}"
-          echo "Dockerfile: ${{ matrix.dockerfile }}"
+          echo "Dockerfile: ${{ matrix.tag }}"
