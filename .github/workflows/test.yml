@@ -78,6 +78,7 @@ jobs:
     strategy:
       matrix:
         include: ${{ fromJson(needs.discover-dockerfiles.outputs.matrix).include }}
+      max-parallel: 1
     with:
       base-image: php
       derived-image-prefix: ghcr.io/${{ needs.discover-dockerfiles.outputs.repo-lower }}
