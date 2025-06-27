@@ -1,4 +1,4 @@
-name: Discover Dockerfiles and Build Matrix (paired)
+name: Discover Dockerfiles and Build Matrix [draft, by copilot & me ;-)]
 
 on:
   workflow_dispatch:
@@ -23,15 +23,15 @@ jobs:
             dir=$(dirname "$file" | sed 's|^\./||')
             dockerfile=$(basename "$file")
             if [[ $dockerfile == 'Dockerfile' ]]; then
-              tag='latest'
+              version='latest'
             else
-              tag=$(basename "$file"|sed 's/Dockerfile\.\?//')
+              version=$(basename "$file"|sed 's/Dockerfile\.\?//')
             fi
             # Evita la root vuota come directory
             if [[ "$dir" == "." ]]; then
               dir=""
             fi
-            includes="${includes}{\"directory\":\"$dir\",\"tag\":\"$tag\"},"
+            includes="${includes}{\"directory\":\"$dir\",\"tag\":\"$version\"},"
           done <<< "$files"
 
           # Rimuove la virgola finale e crea array include
@@ -54,3 +54,29 @@ jobs:
         run: |
           echo "Directory: ${{ matrix.directory }}"
           echo "Dockerfile: ${{ matrix.tag }}"
+          echo "Tag: ${{ matrix.tag }}"
+          
+  print-results:
+    needs: discover-dockerfiles
+    runs-on: [self-hosted]
+    steps:
+      - name: Print matrix info
+        run: |
+          echo "matrix: ${{ needs.discover-dockerfiles.outputs.matrix }}"
+
+#  update-images:
+#    uses: Neomediatech/gh-workflows/.github/workflows/check-and-build-docker-images.yml@main
+#    permissions:
+#      contents: write
+#      packages: write
+#    secrets: inherit
+#    with:
+#      base-image: php
+#      derived-image-prefix: ghcr.io/neomediatech/php
+#      versions: '["8.4", "8.3", "8.2", "8.1", "7.4"]'
+#      type: '["apache", "fpm"]'
+#      derived-image-repo: Neomediatech/php
+#      derived-image-repo-ref: master
+#      update-image: "true"
+#      build-test-image: "false"
+#      force-build: "true"
