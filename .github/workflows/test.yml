@@ -39,7 +39,7 @@ jobs:
           includes="[${includes%,}]"
 
           echo "matrix={\"include\":$includes}" >> $GITHUB_OUTPUT
-          echo "repo-lower=$(echo '${GITHUB_REPOSITORY}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+          echo "repo-lower=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
 
       - name: Show discovered matrix
         run: |
@@ -65,7 +65,7 @@ jobs:
       - name: Print matrix info
         run: |
           echo "matrix: ${{ needs.discover-dockerfiles.outputs.matrix }}"
-          echo ${{ needs.discover-dockerfiles.outputs.repo-lower }}
+          echo "repo-lower: ${{ needs.discover-dockerfiles.outputs.repo-lower }}"
 
   #update-images:
   #  needs: discover-dockerfiles
