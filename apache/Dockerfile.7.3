@@ -14,6 +14,7 @@ RUN echo $TZ > /etc/timezone \
       libbz2-dev libpng-dev libzip-dev libjpeg-dev libwebp-dev libpq-dev \
       libfreetype6-dev libicu-dev libxml2-dev libxslt-dev libgmp-dev \
       libc-client-dev libkrb5-dev pdfgrep libfcgi-bin netcat tzdata whois netbase curl \
+      libpq5 libzip4 libxslt1.1 \
  # Compile PHP extensions that need -dev packages
  && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
  && docker-php-ext-configure gd \
