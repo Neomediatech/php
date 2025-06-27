@@ -67,25 +67,25 @@ jobs:
           echo "matrix: ${{ needs.discover-dockerfiles.outputs.matrix }}"
           echo "repo-lower: ${{ needs.discover-dockerfiles.outputs.repo-lower }}"
 
-  #update-images:
-  #  needs: discover-dockerfiles
-  #  uses: Neomediatech/gh-workflows/.github/workflows/check-and-build-docker-images.yml@main
-  #  permissions:
-  #    contents: write
-  #    packages: write
-  #  secrets: inherit
-  #  strategy:
-  #    matrix:
-  #      include: ${{ fromJson(needs.discover-dockerfiles.outputs.matrix).include }}
-  #  with:
-  #    base-image: php
-  #    derived-image-prefix: ghcr.io/${{ needs.discover-dockerfiles.outputs.repo-lower }}
-  #    #versions: '["8.4", "8.3", "8.2", "8.1", "7.4"]'
-  #    #type: '["apache", "fpm"]'
-  #    versions: '["${{ matrix.tag }}"]'
-  #    type: '["${{ matrix.directory }}"]'
-  #    derived-image-repo: ${{ needs.discover-dockerfiles.outputs.repo-lower }}
-  #    derived-image-repo-ref: ${{ github.ref_name }}
-  #    update-image: "true"
-  #    build-test-image: "false"
-  #    force-build: "true"
+  update-images:
+    needs: discover-dockerfiles
+    uses: Neomediatech/gh-workflows/.github/workflows/check-and-build-docker-images.yml@main
+    permissions:
+      contents: write
+      packages: write
+    secrets: inherit
+    strategy:
+      matrix:
+        include: ${{ fromJson(needs.discover-dockerfiles.outputs.matrix).include }}
+    with:
+      base-image: php
+      derived-image-prefix: ghcr.io/${{ needs.discover-dockerfiles.outputs.repo-lower }}
+      #versions: '["8.4", "8.3", "8.2", "8.1", "7.4"]'
+      #type: '["apache", "fpm"]'
+      versions: '["${{ matrix.tag }}"]'
+      type: '["${{ matrix.directory }}"]'
+      derived-image-repo: ${{ needs.discover-dockerfiles.outputs.repo-lower }}
+      derived-image-repo-ref: ${{ github.ref_name }}
+      update-image: "true"
+      build-test-image: "false"
+      force-build: "true"
