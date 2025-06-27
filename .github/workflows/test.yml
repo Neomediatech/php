@@ -2,7 +2,8 @@ name: Discover Dockerfiles and Build Matrix [draft, by copilot & me ;-)]
 
 on:
   workflow_dispatch:
-
+  workflow_call:
+  
 jobs:
   discover-dockerfiles:
     #runs-on: ubuntu-latest
