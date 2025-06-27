@@ -79,8 +79,10 @@ jobs:
     with:
       base-image: php
       derived-image-prefix: ghcr.io/${{ needs.discover-dockerfiles.outputs.repo_lower }}
-      versions: '["8.4", "8.3", "8.2", "8.1", "7.4"]'
-      type: '["apache", "fpm"]'
+      #versions: '["8.4", "8.3", "8.2", "8.1", "7.4"]'
+      #type: '["apache", "fpm"]'
+      versions: '["${{ matrix.tag }}"]'
+      type: '["${{ matrix.directory }}"]'
       derived-image-repo: ${{ needs.discover-dockerfiles.outputs.repo_lower }}
       derived-image-repo-ref: ${{ github.ref_name }}
       update-image: "true"
