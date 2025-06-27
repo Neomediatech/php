@@ -25,7 +25,7 @@ jobs:
             if [[ $dockerfile == 'Dockerfile' ]]; then
               tag='latest'
             else
-              tag=$(basename "$file"|sed 's/Dockerfile\.?//')
+              tag=$(basename "$file"|sed 's/Dockerfile\.\?//')
             fi
             # Evita la root vuota come directory
             if [[ "$dir" == "." ]]; then
