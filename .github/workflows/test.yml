@@ -9,7 +9,7 @@ jobs:
     runs-on: [self-hosted]
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
-      repo-lower: ${{ steps.lower-repo.outputs.repo_lower }}
+      repo-lower: ${{ steps.set-matrix.outputs.repo_lower }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
