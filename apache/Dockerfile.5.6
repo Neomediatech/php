@@ -12,7 +12,7 @@ RUN sed -i -e 's/deb.debian.org/archive.debian.org/g' \
            -e '/stretch-updates/d' /etc/apt/sources.list
 
 RUN echo $TZ > /etc/timezone && \
-    apt-get update && apt-get -y dist-upgrade && \
+    apt-get update && apt-get -y --allow-unauthenticated dist-upgrade && \
     apt-get install -y libbz2-dev libpng-dev pdfgrep libfcgi-bin libzip-dev netcat tzdata libjpeg-dev libwebp-dev libpq-dev \
                        whois netbase && \
     rm -rf /var/lib/apt/lists*
