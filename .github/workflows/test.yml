@@ -22,7 +22,7 @@ jobs:
           while IFS= read -r file; do
             dir=$(dirname "$file" | sed 's|^\./||')
             dockerfile=$(basename "$file")
-            if [[ $dockerfile == 'Dockerfile" ]]; then
+            if [[ $dockerfile == 'Dockerfile' ]]; then
               tag='latest'
             else
               tag=$(basename "$file"|sed 's/Dockerfile\.?//')
