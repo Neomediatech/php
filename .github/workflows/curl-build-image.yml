@@ -2,7 +2,7 @@
 # curl -X POST \
 #  -H "Accept: application/vnd.github+json" \
 #  -H "Authorization: Bearer __github_api_key__" \
-#  https://api.github.com/repos/Neomediatech/php/dispatches \
+#  https://api.github.com/repos/Neomediatech/gh-workflows/dispatches \
 #  -d '{
 #    "event_type": "build-image",
 #    "client_payload": {
@@ -11,11 +11,11 @@
 #    }
 #  }'
 
-name: Build PHP Docker Images via curl
+name: Build Docker Images via curl
 
 on:
   repository_dispatch: # Per inviare richieste di compilazione immagini via curl
-    types: [build-image] # ascolta eventi con questo nome
+    types: [build-image] # ascolta eventi chiamati 'build-image'
   workflow_dispatch:
 
 permissions:
@@ -25,6 +25,14 @@ permissions:
 jobs:
   build-image:
     uses: Neomediatech/gh-workflows/.github/workflows/build-docker-image.yml@main
-    secrets: inherit
     with:
       base-image: php
+      package-name: neomediatech/php
+      derived-image-prefix: ghcr.io/neomediatech/php
+    secrets:
+      NOTIFY_CMD: ${{ secrets.NOTIFY_CMD }}
+      NOTIFY_UP: ${{ secrets.NOTIFY_UP }}
+      NOTIFY_ENDPOINT: ${{ secrets.NOTIFY_ENDPOINT }}
+      NOTIFY_OPTIONS: ${{ secrets.NOTIFY_OPTIONS }}
+      GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+      API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
