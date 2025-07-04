@@ -5,3 +5,4 @@ ven 4 lug 2025, 20:38:30, CEST --- ghcr.io/neomediatech/php:8-apache UPDATED
 ven 4 lug 2025, 20:42:25, CEST --- ghcr.io/neomediatech/php:8.1-apache UPDATED
 ven 4 lug 2025, 20:46:55, CEST --- ghcr.io/neomediatech/php:8.2-apache UPDATED
 ven 4 lug 2025, 20:50:37, CEST --- ghcr.io/neomediatech/php:8.3-apache UPDATED
+ven 4 lug 2025, 20:51:22, CEST --- ghcr.io/neomediatech/php:8.4-apache UPDATED
