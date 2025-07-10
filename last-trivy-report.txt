@@ -1,0 +1,2 @@
+-----------------------------------
+gio 10 lug 2025, 13:09:16, CEST --- ghcr.io/neomediatech/php:5.6-apache NOT SCANNED
