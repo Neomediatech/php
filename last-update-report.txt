@@ -1,1 +1,2 @@
 mer 16 lug 2025, 15:13:16, CEST --- ghcr.io/neomediatech/php:8.4-apache not-needed (image build needed: false)
+mer 16 lug 2025, 15:13:52, CEST --- ghcr.io/neomediatech/php:8.4-fpm not-needed (image build needed: false)
