@@ -20,6 +20,7 @@ jobs:
       derived-image-prefix: ghcr.io/neomediatech/php
       force-build: "false"
       update-image: "false"
+      image-type: "php"
     secrets:
       NOTIFY_CMD: ${{ secrets.NOTIFY_CMD }}
       NOTIFY_UP: ${{ secrets.NOTIFY_UP }}
