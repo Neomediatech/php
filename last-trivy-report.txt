@@ -26,3 +26,5 @@ mer 16 lug 2025, 15:20:37, CEST --- ghcr.io/neomediatech/php:7.4-fpm NOT SCANNED
 mer 16 lug 2025, 15:21:17, CEST --- ghcr.io/neomediatech/php:7.3-apache NOT SCANNED
 -----------------------------------
 mer 16 lug 2025, 15:21:57, CEST --- ghcr.io/neomediatech/php:7.3-fpm NOT SCANNED
+-----------------------------------
+mer 16 lug 2025, 15:22:42, CEST --- ghcr.io/neomediatech/php:5.6-apache NOT SCANNED
