@@ -14,6 +14,7 @@ permissions:
 jobs:
   build-image:
     uses: Neomediatech/gh-workflows/.github/workflows/build-docker-image-bulk.yml@main
+    #uses: Neomediatech/gh-workflows/.github/workflows/check-and-build-docker-images.yml@main
     with:
       base-image: php
       package-name: neomediatech/php
