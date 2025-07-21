@@ -8,3 +8,4 @@ lun 21 lug 2025, 13:44:37, CEST --- ghcr.io/neomediatech/php:8.3-fpm UPDATED (im
 lun 21 lug 2025, 13:47:09, CEST --- ghcr.io/neomediatech/php:8.2-fpm UPDATED (image build needed: true)
 lun 21 lug 2025, 13:53:14, CEST --- ghcr.io/neomediatech/php:8.1-fpm UPDATED (image build needed: true)
 lun 21 lug 2025, 13:55:11, CEST --- ghcr.io/neomediatech/php:8-fpm UPDATED (image build needed: true)
+lun 21 lug 2025, 14:00:47, CEST --- ghcr.io/neomediatech/php:7.4-fpm UPDATED (image build needed: true)
