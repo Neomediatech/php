@@ -2,3 +2,17 @@
 lun 21 lug 2025, 13:15:51, CEST --- ghcr.io/neomediatech/php:8.4-apache NOT SCANNED
 -----------------------------------
 lun 21 lug 2025, 13:16:18, CEST --- ghcr.io/neomediatech/php:8.3-apache NOT SCANNED
+-----------------------------------
+lun 21 lug 2025, 13:23:03, CEST --- ghcr.io/neomediatech/php:8.4-fpm
+
+Report Summary
+
+┌─────────────────────────────────────────────────┬────────┬─────────────────┬─────────┐
+│                     Target                      │  Type  │ Vulnerabilities │ Secrets │
+├─────────────────────────────────────────────────┼────────┼─────────────────┼─────────┤
+│ ghcr.io/neomediatech/php:8.4-fpm (debian 12.11) │ debian │        0        │    -    │
+└─────────────────────────────────────────────────┴────────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
