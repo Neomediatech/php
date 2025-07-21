@@ -25,3 +25,4 @@ lun 21 lug 2025, 13:05:11, CEST --- ghcr.io/neomediatech/php:5.6-fpm not-needed 
 lun 21 lug 2025, 13:12:10, CEST --- ghcr.io/neomediatech/php:8.4-fpm not-needed (image build needed: false)
 lun 21 lug 2025, 13:12:37, CEST --- ghcr.io/neomediatech/php:8.3-fpm not-needed (image build needed: false)
 lun 21 lug 2025, 13:13:06, CEST --- ghcr.io/neomediatech/php:8.2-fpm not-needed (image build needed: false)
+lun 21 lug 2025, 13:13:33, CEST --- ghcr.io/neomediatech/php:8.1-fpm not-needed (image build needed: false)
