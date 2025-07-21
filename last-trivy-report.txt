@@ -46,3 +46,5 @@ lun 21 lug 2025, 13:04:15, CEST --- ghcr.io/neomediatech/php:7.4-fpm NOT SCANNED
 lun 21 lug 2025, 13:04:43, CEST --- ghcr.io/neomediatech/php:7.3-fpm NOT SCANNED
 -----------------------------------
 lun 21 lug 2025, 13:05:11, CEST --- ghcr.io/neomediatech/php:5.6-fpm NOT SCANNED
+-----------------------------------
+lun 21 lug 2025, 13:12:10, CEST --- ghcr.io/neomediatech/php:8.4-fpm NOT SCANNED
