@@ -17,3 +17,4 @@ lun 7 lug 2025, 17:22:30, CEST --- ghcr.io/neomediatech/php:8.4-fpm UPDATED
 lun 21 lug 2025, 13:21:09, CEST --- ghcr.io/neomediatech/php:8.4-fpm UPDATED
 lun 21 lug 2025, 13:29:32, CEST --- ghcr.io/neomediatech/php:8.3-fpm UPDATED
 lun 21 lug 2025, 13:35:27, CEST --- ghcr.io/neomediatech/php:8.2-fpm UPDATED
+lun 21 lug 2025, 13:40:39, CEST --- ghcr.io/neomediatech/php:8.4-fpm UPDATED
