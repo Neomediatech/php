@@ -112,3 +112,5 @@ Legend:
 
 -----------------------------------
 ven 25 lug 2025, 15:26:13, UTC --- ghcr.io/neomediatech/php:8.4-fpm NOT SCANNED
+-----------------------------------
+ven 25 lug 2025, 15:26:42, UTC --- ghcr.io/neomediatech/php:8.3-fpm NOT SCANNED
