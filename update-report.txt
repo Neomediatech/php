@@ -42,3 +42,4 @@ ven 25 lug 2025, 16:14:29, UTC --- ghcr.io/neomediatech/php:8.4-apache UPDATED
 ven 25 lug 2025, 16:21:18, UTC --- ghcr.io/neomediatech/php:8.3-apache UPDATED
 ven 25 lug 2025, 16:27:59, UTC --- ghcr.io/neomediatech/php:8.2-apache UPDATED
 ven 25 lug 2025, 16:34:36, UTC --- ghcr.io/neomediatech/php:8.1-apache UPDATED
+ven 25 lug 2025, 16:36:53, UTC --- ghcr.io/neomediatech/php:8-apache UPDATED
