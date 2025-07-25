@@ -5,3 +5,4 @@ ven 25 lug 2025, 16:35:51, UTC --- ghcr.io/neomediatech/php:8.1-apache UPDATED (
 ven 25 lug 2025, 16:38:08, UTC --- ghcr.io/neomediatech/php:8-apache UPDATED (image build needed: true)
 ven 25 lug 2025, 16:38:37, UTC --- ghcr.io/neomediatech/php:7.4-apache not-needed (image build needed: false)
 ven 25 lug 2025, 16:39:07, UTC --- ghcr.io/neomediatech/php:7.3-apache not-needed (image build needed: false)
+ven 25 lug 2025, 16:39:35, UTC --- ghcr.io/neomediatech/php:5.6-apache not-needed (image build needed: false)
