@@ -68,3 +68,5 @@ Legend:
 - '-': Not scanned
 - '0': Clean (no security findings detected)
 
+-----------------------------------
+ven 25 lug 2025, 16:38:37, UTC --- ghcr.io/neomediatech/php:7.4-apache NOT SCANNED
