@@ -17,3 +17,4 @@ ven 25 lug 2025, 15:58:30, UTC --- ghcr.io/neomediatech/php:8.2-fpm UPDATED (ima
 ven 25 lug 2025, 16:05:25, UTC --- ghcr.io/neomediatech/php:8.1-fpm UPDATED (image build needed: true)
 ven 25 lug 2025, 16:07:28, UTC --- ghcr.io/neomediatech/php:8-fpm UPDATED (image build needed: true)
 ven 25 lug 2025, 16:07:59, UTC --- ghcr.io/neomediatech/php:7.4-fpm not-needed (image build needed: false)
+ven 25 lug 2025, 16:08:29, UTC --- ghcr.io/neomediatech/php:7.3-fpm not-needed (image build needed: false)
