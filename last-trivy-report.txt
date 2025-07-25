@@ -194,3 +194,5 @@ Legend:
 ven 25 lug 2025, 16:07:59, UTC --- ghcr.io/neomediatech/php:7.4-fpm NOT SCANNED
 -----------------------------------
 ven 25 lug 2025, 16:08:29, UTC --- ghcr.io/neomediatech/php:7.3-fpm NOT SCANNED
+-----------------------------------
+ven 25 lug 2025, 16:08:58, UTC --- ghcr.io/neomediatech/php:5.6-fpm NOT SCANNED
