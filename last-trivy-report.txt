@@ -190,3 +190,5 @@ Legend:
 - '-': Not scanned
 - '0': Clean (no security findings detected)
 
+-----------------------------------
+ven 25 lug 2025, 16:07:59, UTC --- ghcr.io/neomediatech/php:7.4-fpm NOT SCANNED
