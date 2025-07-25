@@ -40,3 +40,17 @@ Legend:
 - '-': Not scanned
 - '0': Clean (no security findings detected)
 
+-----------------------------------
+ven 25 lug 2025, 16:35:51, UTC --- ghcr.io/neomediatech/php:8.1-apache
+
+Report Summary
+
+┌────────────────────────────────────────────────────┬────────┬─────────────────┬─────────┐
+│                       Target                       │  Type  │ Vulnerabilities │ Secrets │
+├────────────────────────────────────────────────────┼────────┼─────────────────┼─────────┤
+│ ghcr.io/neomediatech/php:8.1-apache (debian 12.11) │ debian │        0        │    -    │
+└────────────────────────────────────────────────────┴────────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
