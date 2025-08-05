@@ -12,3 +12,4 @@ mar 5 ago 2025, 15:41:45, UTC --- ghcr.io/neomediatech/php:8.2-fpm UPDATED (imag
 mar 5 ago 2025, 15:48:38, UTC --- ghcr.io/neomediatech/php:8.1-fpm UPDATED (image build needed: true)
 mar 5 ago 2025, 15:50:24, UTC --- ghcr.io/neomediatech/php:8-fpm UPDATED (image build needed: true)
 mar 5 ago 2025, 15:50:53, UTC --- ghcr.io/neomediatech/php:7.4-fpm not-needed (image build needed: false)
+mar 5 ago 2025, 15:51:33, UTC --- ghcr.io/neomediatech/php:7.3-fpm not-needed (image build needed: false)
