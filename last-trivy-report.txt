@@ -130,3 +130,17 @@ Legend:
 - '-': Not scanned
 - '0': Clean (no security findings detected)
 
+-----------------------------------
+mar 5 ago 2025, 15:50:24, UTC --- ghcr.io/neomediatech/php:8-fpm
+
+Report Summary
+
+┌───────────────────────────────────────────────┬────────┬─────────────────┬─────────┐
+│                    Target                     │  Type  │ Vulnerabilities │ Secrets │
+├───────────────────────────────────────────────┼────────┼─────────────────┼─────────┤
+│ ghcr.io/neomediatech/php:8-fpm (debian 12.11) │ debian │        0        │    -    │
+└───────────────────────────────────────────────┴────────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
