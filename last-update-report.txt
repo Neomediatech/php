@@ -1,2 +1,3 @@
 mar 5 ago 2025, 15:59:08, UTC --- ghcr.io/neomediatech/php:8.4-apache UPDATED (image build needed: true)
 mar 5 ago 2025, 16:06:21, UTC --- ghcr.io/neomediatech/php:8.3-apache UPDATED (image build needed: true)
+mar 5 ago 2025, 16:14:09, UTC --- ghcr.io/neomediatech/php:8.2-apache UPDATED (image build needed: true)
