@@ -1,7 +1,6 @@
 FROM php:8-apache-bookworm
 
-LABEL maintainer="docker-dario@neomediatech.it" \
-      org.label-schema.version=$PHP_VERSION
+LABEL org.label-schema.version=$PHP_VERSION
 
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=Europe/Rome
