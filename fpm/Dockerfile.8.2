@@ -1,9 +1,11 @@
 FROM php:8.2-fpm-bookworm
 
-LABEL org.label-schema.version=$PHP_VERSION
+LABEL org.opencontainers.image.source="https://github.com/Neomediatech/php" \
+      org.label-schema.version=$PHP_VERSION
 
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=Europe/Rome \
+    VERSION=$PHP_VERSION \
     CUSTOM_PHP_INI_FILE=/usr/local/etc/php-fpm.d/zz-docker.conf
 
 RUN echo $TZ > /etc/timezone && \

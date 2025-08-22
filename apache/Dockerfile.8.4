@@ -1,9 +1,11 @@
 FROM php:8.4-apache-bookworm
 
-LABEL org.label-schema.version=$PHP_VERSION
+LABEL org.opencontainers.image.source="https://github.com/Neomediatech/php" \
+      org.label-schema.version=$PHP_VERSION
 
 ENV DEBIAN_FRONTEND=noninteractive \
-    TZ=Europe/Rome
+    TZ=Europe/Rome \
+    VERSION=$PHP_VERSION
 
 RUN echo $TZ > /etc/timezone && \
     apt-get update && apt-get -y dist-upgrade && \

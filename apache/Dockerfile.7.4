@@ -1,9 +1,11 @@
 FROM php:7.4-apache
 
-LABEL org.label-schema.version=$PHP_VERSION
+LABEL org.opencontainers.image.source="https://github.com/Neomediatech/php" \
+      org.label-schema.version=$PHP_VERSION
 
 ENV DEBIAN_FRONTEND=noninteractive \
-    TZ=Europe/Rome
+    TZ=Europe/Rome \
+    VERSION=$PHP_VERSION
 
 # Install all build deps and tools, compile PHP extensions, then remove dev packages
 RUN echo $TZ > /etc/timezone \

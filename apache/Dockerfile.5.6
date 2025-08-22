@@ -1,9 +1,11 @@
 FROM php:5.6-apache
 
-LABEL org.label-schema.version=$PHP_VERSION
+LABEL org.opencontainers.image.source="https://github.com/Neomediatech/php" \
+      org.label-schema.version=$PHP_VERSION
 
 ENV DEBIAN_FRONTEND=noninteractive \
-    TZ=Europe/Rome
+    TZ=Europe/Rome \
+    VERSION=$PHP_VERSION
 
 # Update stretch repositories
 RUN sed -i -e 's/deb.debian.org/archive.debian.org/g' \
