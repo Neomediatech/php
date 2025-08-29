@@ -28,7 +28,7 @@ jobs:
       package-name: neomediatech/php
       derived-image-prefix: ghcr.io/neomediatech/php
       force-build: "${{ github.event.inputs.force-build }}"
-      update-image: "false"
+      update-image: "true"
       package-to-check: "PHP_VERSION"
       image-type: "meta"
     secrets:
