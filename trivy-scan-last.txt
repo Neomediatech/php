@@ -1,424 +1,4 @@
-lun 12 gen 2026, 17:49:37, CET --- ghcr.io/neomediatech/php:5.6-apache
-
-Report Summary
-
-┌───────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
-│                      Target                       │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
-├───────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
-│ ghcr.io/neomediatech/php:5.6-apache (debian 9.13) │ debian │        0        │    -    │         -         │
-└───────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
-Legend:
-- '-': Not scanned
-- '0': Clean (no security findings detected)
-
--------------------------------------------------------
-lun 12 gen 2026, 17:44:29, CET --- ghcr.io/neomediatech/php:7.3-apache
-
-Report Summary
-
-┌────────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
-│                       Target                       │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
-├────────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
-│ ghcr.io/neomediatech/php:7.3-apache (debian 11.11) │ debian │        0        │    -    │         -         │
-└────────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
-Legend:
-- '-': Not scanned
-- '0': Clean (no security findings detected)
-
--------------------------------------------------------
-lun 12 gen 2026, 17:44:41, CET --- ghcr.io/neomediatech/php:7.3-fpm
-
-Report Summary
-
-┌─────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
-│                     Target                      │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
-├─────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
-│ ghcr.io/neomediatech/php:7.3-fpm (debian 11.11) │ debian │        0        │    -    │         -         │
-└─────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
-Legend:
-- '-': Not scanned
-- '0': Clean (no security findings detected)
-
--------------------------------------------------------
-lun 12 gen 2026, 17:44:29, CET --- ghcr.io/neomediatech/php:7.4-apache
-
-Report Summary
-
-┌────────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
-│                       Target                       │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
-├────────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
-│ ghcr.io/neomediatech/php:7.4-apache (debian 11.11) │ debian │        0        │    -    │         -         │
-└────────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
-Legend:
-- '-': Not scanned
-- '0': Clean (no security findings detected)
-
--------------------------------------------------------
-lun 12 gen 2026, 17:44:31, CET --- ghcr.io/neomediatech/php:7.4-fpm
-
-Report Summary
-
-┌─────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
-│                     Target                      │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
-├─────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
-│ ghcr.io/neomediatech/php:7.4-fpm (debian 11.11) │ debian │        0        │    -    │         -         │
-└─────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
-Legend:
-- '-': Not scanned
-- '0': Clean (no security findings detected)
-
--------------------------------------------------------
-lun 12 gen 2026, 17:53:52, CET --- ghcr.io/neomediatech/php:8.1-apache
-
-Report Summary
-
-┌────────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
-│                       Target                       │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
-├────────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
-│ ghcr.io/neomediatech/php:8.1-apache (debian 12.12) │ debian │       39        │    -    │         -         │
-└────────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
-Legend:
-- '-': Not scanned
-- '0': Clean (no security findings detected)
-
-
-For OSS Maintainers: VEX Notice
---------------------------------
-If you're an OSS maintainer and Trivy has detected vulnerabilities in your project that you believe are not actually exploitable, consider issuing a VEX (Vulnerability Exploitability eXchange) statement.
-VEX allows you to communicate the actual status of vulnerabilities in your project, improving security transparency and reducing false positives for your users.
-Learn more and start using VEX: https://trivy.dev/docs/v0.68/guide/supply-chain/vex/repo#publishing-vex-documents
-
-To disable this notice, set the TRIVY_DISABLE_VEX_NOTICE environment variable.
-
-
-ghcr.io/neomediatech/php:8.1-apache (debian 12.12)
-==================================================
-Total: 39 (HIGH: 39, CRITICAL: 0)
-
-┌────────────────┬────────────────┬──────────┬────────┬────────────────────┬────────────────────┬──────────────────────────────────────────────────────────────┐
-│    Library     │ Vulnerability  │ Severity │ Status │ Installed Version  │   Fixed Version    │                            Title                             │
-├────────────────┼────────────────┼──────────┼────────┼────────────────────┼────────────────────┼──────────────────────────────────────────────────────────────┤
-│ apache2        │ CVE-2025-55753 │ HIGH     │ fixed  │ 2.4.65-1~deb12u1   │ 2.4.66-1~deb12u1   │ mod_md: Apache HTTP Server: mod_md (ACME), unintended retry  │
-│                │                │          │        │                    │                    │ intervals                                                    │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-55753                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-58098 │          │        │                    │                    │ httpd: Apache HTTP Server: Server Side Includes adds query   │
-│                │                │          │        │                    │                    │ string to #exec...                                           │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-58098                   │
-├────────────────┼────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│ apache2-bin    │ CVE-2025-55753 │          │        │                    │                    │ mod_md: Apache HTTP Server: mod_md (ACME), unintended retry  │
-│                │                │          │        │                    │                    │ intervals                                                    │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-55753                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-58098 │          │        │                    │                    │ httpd: Apache HTTP Server: Server Side Includes adds query   │
-│                │                │          │        │                    │                    │ string to #exec...                                           │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-58098                   │
-├────────────────┼────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│ apache2-data   │ CVE-2025-55753 │          │        │                    │                    │ mod_md: Apache HTTP Server: mod_md (ACME), unintended retry  │
-│                │                │          │        │                    │                    │ intervals                                                    │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-55753                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-58098 │          │        │                    │                    │ httpd: Apache HTTP Server: Server Side Includes adds query   │
-│                │                │          │        │                    │                    │ string to #exec...                                           │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-58098                   │
-├────────────────┼────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│ apache2-utils  │ CVE-2025-55753 │          │        │                    │                    │ mod_md: Apache HTTP Server: mod_md (ACME), unintended retry  │
-│                │                │          │        │                    │                    │ intervals                                                    │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-55753                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-58098 │          │        │                    │                    │ httpd: Apache HTTP Server: Server Side Includes adds query   │
-│                │                │          │        │                    │                    │ string to #exec...                                           │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-58098                   │
-├────────────────┼────────────────┤          │        ├────────────────────┼────────────────────┼──────────────────────────────────────────────────────────────┤
-│ gpgv           │ CVE-2025-68973 │          │        │ 2.2.40-1.1+deb12u1 │ 2.2.40-1.1+deb12u2 │ GnuPG: GnuPG: Information disclosure and potential arbitrary │
-│                │                │          │        │                    │                    │ code execution via out-of-bounds write...                    │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-68973                   │
-├────────────────┼────────────────┤          │        ├────────────────────┼────────────────────┼──────────────────────────────────────────────────────────────┤
-│ linux-libc-dev │ CVE-2025-37899 │          │        │ 6.1.158-1          │ 6.1.159-1          │ kernel: ksmbd: fix use-after-free in session logoff          │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-37899                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-38556 │          │        │                    │                    │ kernel: HID: core: Harden s32ton() against conversion to 0   │
-│                │                │          │        │                    │                    │ bits                                                         │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-38556                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-38593 │          │        │                    │                    │ kernel: Bluetooth: hci_sync: fix double free in              │
-│                │                │          │        │                    │                    │ 'hci_discovery_filter_clear()'                               │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-38593                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40214 │          │        │                    │                    │ kernel: af_unix: Initialise scc_index in unix_add_edge()     │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40214                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40248 │          │        │                    │                    │ kernel: Linux kernel: vsock vulnerability may lead to memory │
-│                │                │          │        │                    │                    │ corruption                                                   │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40248                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40258 │          │        │                    │                    │ kernel: mptcp: fix race condition in mptcp_schedule_work()   │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40258                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40259 │          │        │                    │                    │ kernel: scsi: sg: Do not sleep in atomic context             │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40259                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40269 │          │        │                    │                    │ kernel: Linux kernel ALSA USB audio driver: Buffer overflow  │
-│                │                │          │        │                    │                    │ leading to information...                                    │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40269                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40271 │          │        │                    │                    │ kernel: Linux kernel: Use-after-free in proc_readdir_de()    │
-│                │                │          │        │                    │                    │ can lead to privilege escalation or...                       │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40271                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40277 │          │        │                    │                    │ kernel: drm/vmwgfx: Validate command header size against     │
-│                │                │          │        │                    │                    │ SVGA_CMD_MAX_DATASIZE                                        │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40277                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40280 │          │        │                    │                    │ kernel: tipc: Fix use-after-free in tipc_mon_reinit_self()   │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40280                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40281 │          │        │                    │                    │ kernel: sctp: prevent possible shift-out-of-bounds in        │
-│                │                │          │        │                    │                    │ sctp_transport_update_rto                                    │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40281                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40292 │          │        │                    │                    │ kernel: virtio-net: fix received length check in big packets │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40292                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40294 │          │        │                    │                    │ kernel: Linux kernel: Out-of-bounds write in Bluetooth MGMT  │
-│                │                │          │        │                    │                    │ can lead to information...                                   │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40294                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40297 │          │        │                    │                    │ kernel: net: bridge: fix use-after-free due to MST port      │
-│                │                │          │        │                    │                    │ state bypass                                                 │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40297                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40301 │          │        │                    │                    │ kernel: Linux kernel: Information disclosure and denial of   │
-│                │                │          │        │                    │                    │ service in Bluetooth HCI...                                  │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40301                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40304 │          │        │                    │                    │ kernel: Linux kernel: Out-of-bounds write in fbdev can lead  │
-│                │                │          │        │                    │                    │ to privilege escalation,...                                  │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40304                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40309 │          │        │                    │                    │ kernel: Bluetooth: SCO: Fix UAF on sco_conn_free             │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40309                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40312 │          │        │                    │                    │ kernel: jfs: Verify inode mode when loading from disk        │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40312                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40318 │          │        │                    │                    │ kernel: Bluetooth: hci_sync: fix race in                     │
-│                │                │          │        │                    │                    │ hci_cmd_sync_dequeue_once                                    │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40318                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40322 │          │        │                    │                    │ kernel: Linux kernel: Information disclosure and denial of   │
-│                │                │          │        │                    │                    │ service via out-of-bounds read...                            │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40322                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40324 │          │        │                    │                    │ kernel: NFSD: Fix crash in nfsd4_read_release()              │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40324                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40363 │          │        │                    │                    │ kernel: net: ipv6: fix field-spanning memcpy warning in AH   │
-│                │                │          │        │                    │                    │ output                                                       │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40363                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-68185 │          │        │                    │                    │ kernel: nfs4_setup_readdir(): insufficient locking for       │
-│                │                │          │        │                    │                    │ ->d_parent->d_inode dereferencing                            │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-68185                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-68192 │          │        │                    │                    │ kernel: net: usb: qmi_wwan: initialize MAC header offset in  │
-│                │                │          │        │                    │                    │ qmimux_rx_fixup                                              │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-68192                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-68231 │          │        │                    │                    │ kernel: mm/mempool: fix poisoning order>0 pages with HIGHMEM │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-68231                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-68285 │          │        │                    │                    │ kernel: libceph: fix potential use-after-free in             │
-│                │                │          │        │                    │                    │ have_mon_and_osd_map()                                       │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-68285                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-68287 │          │        │                    │                    │ kernel: usb: dwc3: Fix race condition between concurrent     │
-│                │                │          │        │                    │                    │ dwc3_remove_requests() call paths                            │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-68287                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-68301 │          │        │                    │                    │ kernel: net: atlantic: fix fragment overflow handling in RX  │
-│                │                │          │        │                    │                    │ path                                                         │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-68301                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-68343 │          │        │                    │                    │ kernel: can: gs_usb: gs_usb_receive_bulk_callback(): check   │
-│                │                │          │        │                    │                    │ actual_length before accessing header                        │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-68343                   │
-└────────────────┴────────────────┴──────────┴────────┴────────────────────┴────────────────────┴──────────────────────────────────────────────────────────────┘
--------------------------------------------------------
-lun 12 gen 2026, 17:54:29, CET --- ghcr.io/neomediatech/php:8.1-fpm
-
-Report Summary
-
-┌─────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
-│                     Target                      │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
-├─────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
-│ ghcr.io/neomediatech/php:8.1-fpm (debian 12.12) │ debian │       31        │    -    │         -         │
-└─────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
-Legend:
-- '-': Not scanned
-- '0': Clean (no security findings detected)
-
-
-For OSS Maintainers: VEX Notice
---------------------------------
-If you're an OSS maintainer and Trivy has detected vulnerabilities in your project that you believe are not actually exploitable, consider issuing a VEX (Vulnerability Exploitability eXchange) statement.
-VEX allows you to communicate the actual status of vulnerabilities in your project, improving security transparency and reducing false positives for your users.
-Learn more and start using VEX: https://trivy.dev/docs/v0.68/guide/supply-chain/vex/repo#publishing-vex-documents
-
-To disable this notice, set the TRIVY_DISABLE_VEX_NOTICE environment variable.
-
-
-ghcr.io/neomediatech/php:8.1-fpm (debian 12.12)
-===============================================
-Total: 31 (HIGH: 31, CRITICAL: 0)
-
-┌────────────────┬────────────────┬──────────┬────────┬────────────────────┬────────────────────┬──────────────────────────────────────────────────────────────┐
-│    Library     │ Vulnerability  │ Severity │ Status │ Installed Version  │   Fixed Version    │                            Title                             │
-├────────────────┼────────────────┼──────────┼────────┼────────────────────┼────────────────────┼──────────────────────────────────────────────────────────────┤
-│ gpgv           │ CVE-2025-68973 │ HIGH     │ fixed  │ 2.2.40-1.1+deb12u1 │ 2.2.40-1.1+deb12u2 │ GnuPG: GnuPG: Information disclosure and potential arbitrary │
-│                │                │          │        │                    │                    │ code execution via out-of-bounds write...                    │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-68973                   │
-├────────────────┼────────────────┤          │        ├────────────────────┼────────────────────┼──────────────────────────────────────────────────────────────┤
-│ linux-libc-dev │ CVE-2025-37899 │          │        │ 6.1.158-1          │ 6.1.159-1          │ kernel: ksmbd: fix use-after-free in session logoff          │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-37899                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-38556 │          │        │                    │                    │ kernel: HID: core: Harden s32ton() against conversion to 0   │
-│                │                │          │        │                    │                    │ bits                                                         │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-38556                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-38593 │          │        │                    │                    │ kernel: Bluetooth: hci_sync: fix double free in              │
-│                │                │          │        │                    │                    │ 'hci_discovery_filter_clear()'                               │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-38593                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40214 │          │        │                    │                    │ kernel: af_unix: Initialise scc_index in unix_add_edge()     │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40214                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40248 │          │        │                    │                    │ kernel: Linux kernel: vsock vulnerability may lead to memory │
-│                │                │          │        │                    │                    │ corruption                                                   │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40248                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40258 │          │        │                    │                    │ kernel: mptcp: fix race condition in mptcp_schedule_work()   │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40258                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40259 │          │        │                    │                    │ kernel: scsi: sg: Do not sleep in atomic context             │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40259                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40269 │          │        │                    │                    │ kernel: Linux kernel ALSA USB audio driver: Buffer overflow  │
-│                │                │          │        │                    │                    │ leading to information...                                    │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40269                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40271 │          │        │                    │                    │ kernel: Linux kernel: Use-after-free in proc_readdir_de()    │
-│                │                │          │        │                    │                    │ can lead to privilege escalation or...                       │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40271                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40277 │          │        │                    │                    │ kernel: drm/vmwgfx: Validate command header size against     │
-│                │                │          │        │                    │                    │ SVGA_CMD_MAX_DATASIZE                                        │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40277                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40280 │          │        │                    │                    │ kernel: tipc: Fix use-after-free in tipc_mon_reinit_self()   │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40280                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40281 │          │        │                    │                    │ kernel: sctp: prevent possible shift-out-of-bounds in        │
-│                │                │          │        │                    │                    │ sctp_transport_update_rto                                    │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40281                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40292 │          │        │                    │                    │ kernel: virtio-net: fix received length check in big packets │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40292                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40294 │          │        │                    │                    │ kernel: Linux kernel: Out-of-bounds write in Bluetooth MGMT  │
-│                │                │          │        │                    │                    │ can lead to information...                                   │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40294                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40297 │          │        │                    │                    │ kernel: net: bridge: fix use-after-free due to MST port      │
-│                │                │          │        │                    │                    │ state bypass                                                 │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40297                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40301 │          │        │                    │                    │ kernel: Linux kernel: Information disclosure and denial of   │
-│                │                │          │        │                    │                    │ service in Bluetooth HCI...                                  │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40301                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40304 │          │        │                    │                    │ kernel: Linux kernel: Out-of-bounds write in fbdev can lead  │
-│                │                │          │        │                    │                    │ to privilege escalation,...                                  │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40304                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40309 │          │        │                    │                    │ kernel: Bluetooth: SCO: Fix UAF on sco_conn_free             │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40309                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40312 │          │        │                    │                    │ kernel: jfs: Verify inode mode when loading from disk        │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40312                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40318 │          │        │                    │                    │ kernel: Bluetooth: hci_sync: fix race in                     │
-│                │                │          │        │                    │                    │ hci_cmd_sync_dequeue_once                                    │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40318                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40322 │          │        │                    │                    │ kernel: Linux kernel: Information disclosure and denial of   │
-│                │                │          │        │                    │                    │ service via out-of-bounds read...                            │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40322                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40324 │          │        │                    │                    │ kernel: NFSD: Fix crash in nfsd4_read_release()              │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40324                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-40363 │          │        │                    │                    │ kernel: net: ipv6: fix field-spanning memcpy warning in AH   │
-│                │                │          │        │                    │                    │ output                                                       │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-40363                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-68185 │          │        │                    │                    │ kernel: nfs4_setup_readdir(): insufficient locking for       │
-│                │                │          │        │                    │                    │ ->d_parent->d_inode dereferencing                            │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-68185                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-68192 │          │        │                    │                    │ kernel: net: usb: qmi_wwan: initialize MAC header offset in  │
-│                │                │          │        │                    │                    │ qmimux_rx_fixup                                              │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-68192                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-68231 │          │        │                    │                    │ kernel: mm/mempool: fix poisoning order>0 pages with HIGHMEM │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-68231                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-68285 │          │        │                    │                    │ kernel: libceph: fix potential use-after-free in             │
-│                │                │          │        │                    │                    │ have_mon_and_osd_map()                                       │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-68285                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-68287 │          │        │                    │                    │ kernel: usb: dwc3: Fix race condition between concurrent     │
-│                │                │          │        │                    │                    │ dwc3_remove_requests() call paths                            │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-68287                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-68301 │          │        │                    │                    │ kernel: net: atlantic: fix fragment overflow handling in RX  │
-│                │                │          │        │                    │                    │ path                                                         │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-68301                   │
-│                ├────────────────┤          │        │                    │                    ├──────────────────────────────────────────────────────────────┤
-│                │ CVE-2025-68343 │          │        │                    │                    │ kernel: can: gs_usb: gs_usb_receive_bulk_callback(): check   │
-│                │                │          │        │                    │                    │ actual_length before accessing header                        │
-│                │                │          │        │                    │                    │ https://avd.aquasec.com/nvd/cve-2025-68343                   │
-└────────────────┴────────────────┴──────────┴────────┴────────────────────┴────────────────────┴──────────────────────────────────────────────────────────────┘
--------------------------------------------------------
-lun 12 gen 2026, 18:17:34, CET --- ghcr.io/neomediatech/php:8.2-apache
-
-Report Summary
-
-┌────────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
-│                       Target                       │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
-├────────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
-│ ghcr.io/neomediatech/php:8.2-apache (debian 12.13) │ debian │        0        │    -    │         -         │
-└────────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
-Legend:
-- '-': Not scanned
-- '0': Clean (no security findings detected)
-
--------------------------------------------------------
-lun 12 gen 2026, 18:17:33, CET --- ghcr.io/neomediatech/php:8.2-fpm
-
-Report Summary
-
-┌─────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
-│                     Target                      │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
-├─────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
-│ ghcr.io/neomediatech/php:8.2-fpm (debian 12.13) │ debian │        0        │    -    │         -         │
-└─────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
-Legend:
-- '-': Not scanned
-- '0': Clean (no security findings detected)
-
--------------------------------------------------------
-lun 12 gen 2026, 18:17:34, CET --- ghcr.io/neomediatech/php:8.3-apache
+lun 19 gen 2026, 16:41:38, CET --- ghcr.io/neomediatech/php:8.3-apache
 
 Report Summary
 
@@ -432,7 +12,49 @@ Legend:
 - '0': Clean (no security findings detected)
 
 -------------------------------------------------------
-lun 12 gen 2026, 18:17:34, CET --- ghcr.io/neomediatech/php:8-apache
+lun 19 gen 2026, 16:45:02, CET --- ghcr.io/neomediatech/php:8.3-fpm
+
+Report Summary
+
+┌─────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
+│                     Target                      │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
+├─────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
+│ ghcr.io/neomediatech/php:8.3-fpm (debian 12.13) │ debian │        0        │    -    │         -         │
+└─────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+-------------------------------------------------------
+lun 19 gen 2026, 16:45:01, CET --- ghcr.io/neomediatech/php:8.4-apache
+
+Report Summary
+
+┌────────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
+│                       Target                       │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
+├────────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
+│ ghcr.io/neomediatech/php:8.4-apache (debian 12.13) │ debian │        0        │    -    │         -         │
+└────────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+-------------------------------------------------------
+lun 19 gen 2026, 16:44:48, CET --- ghcr.io/neomediatech/php:8.4-fpm
+
+Report Summary
+
+┌─────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
+│                     Target                      │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
+├─────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
+│ ghcr.io/neomediatech/php:8.4-fpm (debian 12.13) │ debian │        0        │    -    │         -         │
+└─────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+-------------------------------------------------------
+lun 19 gen 2026, 16:45:01, CET --- ghcr.io/neomediatech/php:8-apache
 
 Report Summary
 
@@ -441,6 +63,20 @@ Report Summary
 ├──────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
 │ ghcr.io/neomediatech/php:8-apache (debian 12.13) │ debian │        0        │    -    │         -         │
 └──────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+-------------------------------------------------------
+lun 19 gen 2026, 16:45:02, CET --- ghcr.io/neomediatech/php:8-fpm
+
+Report Summary
+
+┌───────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
+│                    Target                     │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
+├───────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
+│ ghcr.io/neomediatech/php:8-fpm (debian 12.13) │ debian │        0        │    -    │         -         │
+└───────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
 Legend:
 - '-': Not scanned
 - '0': Clean (no security findings detected)
