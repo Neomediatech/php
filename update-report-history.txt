@@ -118,3 +118,8 @@ lun 2 mar 2026, 12:38:58, CET --- ghcr.io/neomediatech/php:8.4-apache done (imag
 lun 2 mar 2026, 12:39:14, CET --- ghcr.io/neomediatech/php:8.5-apache done (image build needed: true)
 lun 2 mar 2026, 12:44:20, CET --- ghcr.io/neomediatech/php:8.3-fpm done (image build needed: true)
 lun 2 mar 2026, 12:44:54, CET --- ghcr.io/neomediatech/php:8-fpm done (image build needed: true)
+lun 16 mar 2026, 09:51:35, CET --- ghcr.io/neomediatech/php:8.5-apache done (image build needed: true)
+lun 16 mar 2026, 09:51:50, CET --- ghcr.io/neomediatech/php:8.4-apache done (image build needed: true)
+lun 16 mar 2026, 10:10:56, CET --- ghcr.io/neomediatech/php:8.4-fpm done (image build needed: true)
+lun 16 mar 2026, 10:11:01, CET --- ghcr.io/neomediatech/php:8-fpm done (image build needed: true)
+lun 16 mar 2026, 10:14:52, CET --- ghcr.io/neomediatech/php:8-apache done (image build needed: true)
