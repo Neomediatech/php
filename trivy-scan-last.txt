@@ -1,96 +1,26 @@
-lun 28 set 2026, 12:48:24, CEST --- ghcr.io/neomediatech/php:8.3-apache
+mar 29 set 2026, 12:31:02, CEST --- ghcr.io/neomediatech/php:8.2-apache
 
 Report Summary
 
 ┌────────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
 │                       Target                       │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
 ├────────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
-│ ghcr.io/neomediatech/php:8.3-apache (debian 12.15) │ debian │        0        │    -    │         -         │
+│ ghcr.io/neomediatech/php:8.2-apache (debian 12.15) │ debian │        0        │    -    │         -         │
 └────────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
 Legend:
 - '-': Not scanned
 - '0': Clean (no security findings detected)
 
 -------------------------------------------------------
-lun 28 set 2026, 12:43:14, CEST --- ghcr.io/neomediatech/php:8.3-fpm
+mar 29 set 2026, 12:29:35, CEST --- ghcr.io/neomediatech/php:8.2-fpm
 
 Report Summary
 
 ┌─────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
 │                     Target                      │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
 ├─────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
-│ ghcr.io/neomediatech/php:8.3-fpm (debian 12.15) │ debian │        0        │    -    │         -         │
+│ ghcr.io/neomediatech/php:8.2-fpm (debian 12.15) │ debian │        0        │    -    │         -         │
 └─────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
-Legend:
-- '-': Not scanned
-- '0': Clean (no security findings detected)
-
--------------------------------------------------------
-lun 28 set 2026, 12:44:16, CEST --- ghcr.io/neomediatech/php:8.4-apache
-
-Report Summary
-
-┌────────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
-│                       Target                       │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
-├────────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
-│ ghcr.io/neomediatech/php:8.4-apache (debian 12.15) │ debian │        0        │    -    │         -         │
-└────────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
-Legend:
-- '-': Not scanned
-- '0': Clean (no security findings detected)
-
--------------------------------------------------------
-lun 28 set 2026, 12:44:13, CEST --- ghcr.io/neomediatech/php:8.4-fpm
-
-Report Summary
-
-┌─────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
-│                     Target                      │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
-├─────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
-│ ghcr.io/neomediatech/php:8.4-fpm (debian 12.15) │ debian │        0        │    -    │         -         │
-└─────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
-Legend:
-- '-': Not scanned
-- '0': Clean (no security findings detected)
-
--------------------------------------------------------
-lun 28 set 2026, 12:44:09, CEST --- ghcr.io/neomediatech/php:8.5-apache
-
-Report Summary
-
-┌────────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
-│                       Target                       │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
-├────────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
-│ ghcr.io/neomediatech/php:8.5-apache (debian 12.15) │ debian │        0        │    -    │         -         │
-└────────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
-Legend:
-- '-': Not scanned
-- '0': Clean (no security findings detected)
-
--------------------------------------------------------
-lun 28 set 2026, 12:48:24, CEST --- ghcr.io/neomediatech/php:8-apache
-
-Report Summary
-
-┌──────────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
-│                      Target                      │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
-├──────────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
-│ ghcr.io/neomediatech/php:8-apache (debian 12.15) │ debian │        0        │    -    │         -         │
-└──────────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
-Legend:
-- '-': Not scanned
-- '0': Clean (no security findings detected)
-
--------------------------------------------------------
-lun 28 set 2026, 12:44:00, CEST --- ghcr.io/neomediatech/php:8-fpm
-
-Report Summary
-
-┌───────────────────────────────────────────────┬────────┬─────────────────┬─────────┬───────────────────┐
-│                    Target                     │  Type  │ Vulnerabilities │ Secrets │ Misconfigurations │
-├───────────────────────────────────────────────┼────────┼─────────────────┼─────────┼───────────────────┤
-│ ghcr.io/neomediatech/php:8-fpm (debian 12.15) │ debian │        0        │    -    │         -         │
-└───────────────────────────────────────────────┴────────┴─────────────────┴─────────┴───────────────────┘
 Legend:
 - '-': Not scanned
 - '0': Clean (no security findings detected)
