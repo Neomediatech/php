@@ -1,4 +1,4 @@
-gio 5 nov 2026, 13:33:33, CET --- ghcr.io/neomediatech/php:8.2-apache
+ven 6 nov 2026, 13:16:21, CET --- ghcr.io/neomediatech/php:8.2-apache
 
 Report Summary
 
@@ -12,7 +12,7 @@ Legend:
 - '0': Clean (no security findings detected)
 
 -------------------------------------------------------
-gio 5 nov 2026, 13:16:31, CET --- ghcr.io/neomediatech/php:8.2-fpm
+ven 6 nov 2026, 13:12:03, CET --- ghcr.io/neomediatech/php:8.2-fpm
 
 Report Summary
 
@@ -26,7 +26,7 @@ Legend:
 - '0': Clean (no security findings detected)
 
 -------------------------------------------------------
-gio 5 nov 2026, 13:33:33, CET --- ghcr.io/neomediatech/php:8.3-apache
+ven 6 nov 2026, 13:12:42, CET --- ghcr.io/neomediatech/php:8.3-apache
 
 Report Summary
 
@@ -40,7 +40,7 @@ Legend:
 - '0': Clean (no security findings detected)
 
 -------------------------------------------------------
-gio 5 nov 2026, 13:16:28, CET --- ghcr.io/neomediatech/php:8.3-fpm
+ven 6 nov 2026, 13:12:08, CET --- ghcr.io/neomediatech/php:8.3-fpm
 
 Report Summary
 
@@ -54,7 +54,7 @@ Legend:
 - '0': Clean (no security findings detected)
 
 -------------------------------------------------------
-gio 5 nov 2026, 13:33:41, CET --- ghcr.io/neomediatech/php:8.4-apache
+ven 6 nov 2026, 13:02:20, CET --- ghcr.io/neomediatech/php:8.4-apache
 
 Report Summary
 
@@ -68,7 +68,7 @@ Legend:
 - '0': Clean (no security findings detected)
 
 -------------------------------------------------------
-gio 5 nov 2026, 13:13:48, CET --- ghcr.io/neomediatech/php:8.4-fpm
+ven 6 nov 2026, 12:56:20, CET --- ghcr.io/neomediatech/php:8.4-fpm
 
 Report Summary
 
@@ -82,7 +82,7 @@ Legend:
 - '0': Clean (no security findings detected)
 
 -------------------------------------------------------
-gio 5 nov 2026, 13:11:19, CET --- ghcr.io/neomediatech/php:8.5-apache
+ven 6 nov 2026, 12:58:21, CET --- ghcr.io/neomediatech/php:8.5-apache
 
 Report Summary
 
@@ -96,7 +96,7 @@ Legend:
 - '0': Clean (no security findings detected)
 
 -------------------------------------------------------
-gio 5 nov 2026, 13:22:41, CET --- ghcr.io/neomediatech/php:8-apache
+ven 6 nov 2026, 13:06:24, CET --- ghcr.io/neomediatech/php:8-apache
 
 Report Summary
 
@@ -110,7 +110,7 @@ Legend:
 - '0': Clean (no security findings detected)
 
 -------------------------------------------------------
-gio 5 nov 2026, 13:19:03, CET --- ghcr.io/neomediatech/php:8-fpm
+ven 6 nov 2026, 12:56:21, CET --- ghcr.io/neomediatech/php:8-fpm
 
 Report Summary
 
