@@ -332,3 +332,5 @@ ven 6 nov 2026, 13:07:54, CET --- ghcr.io/neomediatech/php:8.3-fpm done (image b
 ven 6 nov 2026, 13:08:06, CET --- ghcr.io/neomediatech/php:8.2-fpm done (image build needed: true)
 ven 6 nov 2026, 13:10:03, CET --- ghcr.io/neomediatech/php:8.3-apache done (image build needed: true)
 ven 6 nov 2026, 13:13:38, CET --- ghcr.io/neomediatech/php:8.2-apache done (image build needed: true)
+sab 7 nov 2026, 11:55:14, CET --- ghcr.io/neomediatech/php:8.2-fpm done (image build needed: true)
+sab 7 nov 2026, 11:56:18, CET --- ghcr.io/neomediatech/php:8.2-apache done (image build needed: true)
