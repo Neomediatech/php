@@ -1,0 +1,24 @@
+#!/bin/sh
+# Genera la configurazione di mpm_prefork dal template, sostituendo solo le variabili APACHE_* elencate.
+# Si ferma con errore se una variabile non e' un intero o se MaxRequestWorkers supera ServerLimit.
+set -eu
+confdir="${APACHE_CONFDIR:-/etc/apache2}"
+template="$confdir/mpm_prefork.conf.template"
+output="$confdir/mods-enabled/mpm_prefork.conf"
+vars="APACHE_START_SERVERS APACHE_MIN_SPARE_SERVERS APACHE_MAX_SPARE_SERVERS APACHE_MAX_REQUEST_WORKERS APACHE_MAX_CONNECTIONS_PER_CHILD APACHE_SERVER_LIMIT"
+
+for v in $vars; do
+    eval "val=\${$v:-}"
+    case "$val" in
+        ''|*[!0-9]*) echo "ERRORE: $v deve essere un numero intero (valore: '$val')" >&2; exit 1 ;;
+    esac
+done
+if [ "$APACHE_MAX_REQUEST_WORKERS" -gt "$APACHE_SERVER_LIMIT" ]; then
+    echo "ERRORE: APACHE_MAX_REQUEST_WORKERS ($APACHE_MAX_REQUEST_WORKERS) supera APACHE_SERVER_LIMIT ($APACHE_SERVER_LIMIT)" >&2
+    exit 1
+fi
+
+subst=""
+for v in $vars; do subst="$subst\${$v} "; done
+echo "Processing $template -> $output"
+envsubst "$subst" < "$template" > "$output"

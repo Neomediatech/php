@@ -1,4 +1,6 @@
-FROM php:8.5-apache-bookworm
+# Build:  docker build -f Dockerfile.8.5 --build-arg DEBIAN_RELEASE=trixie -t php:8.5-apache-trixie .
+ARG DEBIAN_RELEASE=trixie
+FROM php:8.5-apache-${DEBIAN_RELEASE}
 
 LABEL org.opencontainers.image.source="https://github.com/Neomediatech/php" \
       org.label-schema.version=$PHP_VERSION
@@ -8,22 +10,25 @@ ENV DEBIAN_FRONTEND=noninteractive \
     VERSION=$PHP_VERSION
 
 RUN echo $TZ > /etc/timezone && \
-    apt-get update && apt-get -y dist-upgrade && \
-    apt-get install -y pdfgrep libfcgi-bin netcat-traditional tzdata \
-                       whois netbase gettext-base wget && \
-    rm -rf /var/lib/apt/lists*
+    apt-get update && apt-get -y upgrade && \
+    apt-get install -y --no-install-recommends \
+        pdfgrep libfcgi-bin netcat-traditional tzdata whois netbase gettext-base wget && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+# install-php-extensions: versione e checksum fissati (aggiornare insieme: ARG e sha256)
+ARG IPE_VERSION=2.13.4
+ARG IPE_SHA256=2f9a863fcf606b8180893334724f6bd5cb1581fbbe168d433432334d250b3161
+ADD --chmod=755 --checksum=sha256:${IPE_SHA256} \
+    https://github.com/mlocati/docker-php-extension-installer/releases/download/${IPE_VERSION}/install-php-extensions \
+    /usr/local/bin/install-php-extensions
 
-RUN chmod +x /usr/local/bin/install-php-extensions
-
-ENV MODULES="apcu bcmath bz2 exif gd imap intl mailparse mysqli opcache pdo_mysql"
+ENV MODULES="apcu bcmath bz2 exif ftp gd imap intl mailparse mysqli opcache pdo_mysql"
 ENV MODULES="$MODULES redis soap sockets xsl zip gmp sysvsem imagick"
 # Install extensions with install-php-extensions, thanks to Michele Locati https://github.com/mlocati
 RUN install-php-extensions $MODULES
 
-# Enable rewrite,  ssl, info, remoteip modules
-RUN a2enmod rewrite ssl info remoteip
+# Moduli Apache: rewrite, ssl, info, remoteip, headers, expires
+RUN a2enmod rewrite ssl info remoteip headers expires
 
 # Create custom snippets directory
 RUN mkdir -p $APACHE_CONFDIR/conf-custom && \
@@ -42,11 +47,14 @@ ENV APACHE_START_SERVERS="5" \
     APACHE_SERVER_LIMIT="256"
 
 COPY --chmod=444 mpm_prefork.conf.template $APACHE_CONFDIR/
+COPY --chmod=755 apache-render-mpm /usr/local/bin/
+# configurazione prefork di default (l'entrypoint la rigenera all'avvio con le variabili APACHE_*)
+RUN apache-render-mpm
 
-COPY --chmod=755 custom-entrypoint /
+COPY --chmod=755 custom-entrypoint.8.5 /custom-entrypoint
 
 ENTRYPOINT ["/custom-entrypoint"]
 CMD ["apache2-foreground"]
 
-HEALTHCHECK --interval=60s --timeout=5s --start-period=60s --retries=10 CMD curl -sS localhost/server-status?auto | grep -E "ServerVersion|RestartTime|ServerUptime:" && echo "Gimme a page" || exit 1
-
+HEALTHCHECK --interval=60s --timeout=5s --start-period=60s --retries=10 \
+  CMD curl -fsS --max-time 4 "http://localhost/server-status?auto" | grep -q ServerVersion || exit 1
