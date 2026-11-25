@@ -14,6 +14,11 @@ on:
         options:
           - "true"
           - "false"
+      only-image:
+        description: 'Immagine singola da processare (tag, es. 8.5-apache, 8.4-fpm, latest-apache). Vuoto o "all" = tutte'
+        required: false
+        default: "all"
+        type: string
 
 permissions:
   contents: write
@@ -28,6 +33,7 @@ jobs:
       package-name: neomediatech/php
       derived-image-prefix: ghcr.io/neomediatech/php
       force-build: "${{ github.event.inputs.force-build || 'false' }}"
+      only-image: "${{ github.event.inputs.only-image || 'all' }}"
       update-image: "true"
       package-to-check: "PHP_VERSION"
       image-type: "meta"
@@ -40,4 +46,3 @@ jobs:
       API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-
